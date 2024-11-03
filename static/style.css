@@ -3,16 +3,19 @@
     flex-wrap: wrap;
     max-width: 1140px;
     margin: 0 auto;
-    padding-top: 200px;
+    padding-top: 20px;
 }
 
 .gallery-item {
-    margin: 15px 0;
+
+    display: flex;
+    margin: auto;
     padding: 0 15px;
     overflow: hidden;
 }
 
 .grid-iteminner {
+    margin: 0  10px;
     position: relative;
     display: flex;
     cursor: pointer;
@@ -47,7 +50,7 @@
     transform: scale(1.05);
 }
 
-.grid-item__title {
+.grid-itemtitle {
     position: absolute;
     left: 15px;
     bottom: 10px;
@@ -64,6 +67,6 @@
     transition-delay: 0.2s;
 }
 
-.grid-iteminner:hover .grid-item__title > span {
+.grid-iteminner:hover .grid-itemtitle > span {
     transform: translateY(0);
 }
