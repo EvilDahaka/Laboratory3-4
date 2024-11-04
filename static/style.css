@@ -85,6 +85,31 @@ body {
 .grid-iteminner:hover .grid-itemtitle > span {
     transform: translateY(0);
 }
-/*.products {
+.container_products {
+    justify-content: center;
+}
+.products {
+    width: 960px;
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;          
+    gap: 20px;                
+    position: relative;
+    margin: auto;
+}
+.product {
+    background-color: #ddd;
+    width: 300px;
+    height: 250px;
+
+   
     
-}*/
+}
+.product p {
+    font-size: 14px;
+    margin: 0 0 ;
+    color: black;
+    
+    
+}
