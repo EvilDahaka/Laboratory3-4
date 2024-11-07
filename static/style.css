@@ -97,34 +97,59 @@ body {
     position: relative;
     margin: auto;
 }
-.product_card_content {
+.card {
     display:grid;
     background-color: #ddd;
     width: 320px;
-    height: 270px;
+    height: 350px;
     border-radius: 10px;
     justify-content: center;
     transition: transform 0.2s ease;
 }
-.product_img {
+.card:hover {
+    transform: scale(1.05);
+}
+/*card content*/
+.card img {
     display:block;
     width: 300;
     height: 200;
     margin-top: 10px;
     border-radius: 5px;
 }
-.product_card p,h1 {
+.card_info p,h1,h2,h3,h4,h5,h6,a{
     font-size: 14px;
     color: black;
     margin: 0 0;
 }
+.card_inner h1 {
+    display: block;
+    color: #fd0000;
+    font-size: 21px;
+}
 
-.product_card_text {
+.card_inner {
+    display:flex;
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    right: 10px;
+    gap: 20px
+    
+}
+.card_inner button {
+    color: #000;
+    background-color: #55ff7a;
+  }
+.card_text p {
+  word-wrap: break-word; /* переносить слова, якщо вони не поміщаються */
+  height: 90px;
+} 
+
+.card_info {
     width: 300px;
-    height: auto;
-    flex-wrap: wrap;
-    justify-content: left;
+    height: 330;
+
 }
-.product_card_content:hover {
-    transform: scale(1.05);
-}
+
+
