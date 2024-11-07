@@ -10,7 +10,7 @@ class Product(db.Model):
     tag = db.Column(db.String(100), nullable=False)
     name = db.Column(db.String(73), nullable=False)
     description = db.Column(db.String(178), nullable=False)
-    sell = db.Column(db.Float, nullable=False) 
+    price = db.Column(db.Float, nullable=False) 
     image_url = db.Column(db.String(200), nullable=False)
     
 
@@ -27,7 +27,7 @@ def about():
 @app.route('/products')
 def products():
     items = [
-        {"name": "Samsung Galaxy S23", "description": "Остання модель Galaxy з потужною камерою та швидким процесором.", "sell": 10850, "image_url": "https://via.placeholder.com/300x200"}
+        {"name": "Samsung Galaxy S23", "description": "Остання модель Galaxy з потужною камерою та швидким процесором.", "price": 10850, "image_url": "https://via.placeholder.com/300x200"}
         # Додайте інші товари за необхідністю
     ] #Product.query.all()
     return render_template('products.html', items=items)
