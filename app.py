@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -26,11 +26,29 @@ def about():
 
 @app.route('/products')
 def products():
-    items = [
-        {"name": "Samsung Galaxy S23", "description": "Остання модель Galaxy з потужною камерою та швидким процесором.", "price": 10850, "image_url": "https://via.placeholder.com/300x200"}
-        # Додайте інші товари за необхідністю
-    ] #Product.query.all()
+    tag = request.args.get('tag')  # Отримуємо тег із параметрів запиту
+    if tag:
+        items = Product.query.filter_by(tag=tag).all()  # Фільтруємо за тегом
+    else:
+        items = Product.query.all()
     return render_template('products.html', items=items)
+@app.route('/product/add', methods=['GET', 'POST'])
+def add_product():
+    if request.method == 'POST':
+        tag = request.form['tag']
+        name = request.form['name']
+        description = request.form['description']
+        price = request.form['price']
+        image_url = request.form['image_url']
+
+        # Створюємо новий об'єкт Product та додаємо його в базу
+        new_product = Product(tag=tag, name=name, description=description, price=float(price), image_url=image_url)
+        db.session.add(new_product)
+        db.session.commit()
+
+        return redirect(url_for('products'))
+    
+    return render_template('add_product.html')
 
 @app.route('/feedback')
 def feedback():
@@ -41,4 +59,6 @@ def cart():
     return render_template('cart.html')
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)

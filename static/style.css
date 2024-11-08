@@ -101,7 +101,7 @@ body {
     display:grid;
     background-color: #ddd;
     width: 320px;
-    height: 350px;
+    height: 450px;
     border-radius: 10px;
     justify-content: center;
     transition: transform 0.2s ease;
@@ -112,8 +112,8 @@ body {
 /*card content*/
 .card img {
     display:block;
-    width: 300;
-    height: 200;
+    width: 300px;
+    height: 300px;
     margin-top: 10px;
     border-radius: 5px;
 }
