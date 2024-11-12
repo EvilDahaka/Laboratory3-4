@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///products.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///feedback.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 class Product(db.Model):
@@ -12,7 +13,13 @@ class Product(db.Model):
     description = db.Column(db.String(178), nullable=False)
     price = db.Column(db.Float, nullable=False) 
     image_url = db.Column(db.String(200), nullable=False)
-    
+
+class feedback(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(54), nullable=False)
+    description = db.Column(db.String(500), nullable=False)
+
 
 
 @app.route('/')
@@ -52,6 +59,16 @@ def add_product():
 
 @app.route('/feedback')
 def feedback():
+    if request.method == 'POST':
+        email = request.form['email']
+        name = request.form['name']
+        description = request.form['description']
+
+        new_feedback = feedback(email=email, name=name, description=description,)
+        db.session.add(new_feedback)
+        db.session.commit()
+
+        return redirect(url_for('feedback'))
     return render_template('feedback.html')
 
 @app.route('/cart')
