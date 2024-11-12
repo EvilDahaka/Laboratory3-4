@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Зворотній зв'язок{% endblock %}
 {% block content %}
+
 <h1 class="text-center">Зворотній зв'язок</h1>
 
-<form id="feedbackForm" class="mx-auto" style="max-width: 600px;">
+<form id="feedbackForm" method="POST" class="mx-auto" style="max-width: 600px;">
     <div class="mb-3">
         <label for="name" class="form-label">Ім'я:</label>
         <input type="text" id="name" name="name" required class="form-control">
@@ -13,10 +14,11 @@
         <input type="email" id="email" name="email" required class="form-control">
     </div>
     <div class="mb-3">
-        <label for="message" class="form-label">Повідомлення:</label>
-        <textarea id="message" name="message" required class="form-control" rows="5"></textarea>
+        <label for="description" class="form-label">Повідомлення:</label>
+        <textarea id="description" name="description" required class="form-control" rows="5"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Надіслати</button>
 </form>
+
 
 {% endblock %}
