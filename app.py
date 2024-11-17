@@ -76,6 +76,10 @@ def feedback():
 def cart():
     return render_template('cart.html')
 
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
